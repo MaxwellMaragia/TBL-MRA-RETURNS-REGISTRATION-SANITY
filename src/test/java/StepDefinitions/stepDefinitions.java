@@ -649,7 +649,7 @@ public class stepDefinitions extends BaseClass {
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(),'Self-Employed')]"))).click();
         Thread.sleep(3000);
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.id("RegisterIndividual:individualAccordion:TotalSalesTurnoverPA_input"))).sendKeys("10000");
-
+        Thread.sleep(2000);
         //add business sector
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.id("RegisterIndividual:individualAccordion:businessDetailsHandler:AddBusinessSD"))).click();
         switchToBackofficeFrame();
@@ -665,11 +665,54 @@ public class stepDefinitions extends BaseClass {
         fourty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Software publishing')]"))).isDisplayed();
     }
 
+    @Then("Fill in sole proprietor additional details")
+    public void fillInSolProprietorAdditionalDetails() throws InterruptedException {
+        ten.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(., 'Sole Proprietor Additional Details')]"))).click();
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("RegisterIndividual:individualAccordion:tradingNameTableHandler:AddTradingNameDetails"))).click();
+        switchToFrameBackoffice();
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("TradingNameDetails:TradingName"))).sendKeys("Codei "+getRandom(5));
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id=\"TradingNameDetails:PrimaryTradingName\"]/div[2]/span")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("TradingNameDetails:EffectiveDate_input")).sendKeys(daysFromToday(2));
+        Thread.sleep(2000);
+        actions.sendKeys(Keys.TAB).perform();
+        Thread.sleep(1000);
+        driver.findElement(By.id("TradingNameDetails:SourceOfCapitalInv")).sendKeys("Loan");
+        Thread.sleep(1000);
+        driver.findElement(By.id("TradingNameDetails:ExistBusinessCapital_input")).sendKeys("100000");
+        Thread.sleep(1000);
+        driver.findElement(By.id("TradingNameDetails:TotCapitalInvst_input")).sendKeys("5000");
+        Thread.sleep(1000);
+        driver.findElement(By.id("TradingNameDetails:NatureOfBusiness")).sendKeys("Software development");
+        Thread.sleep(500);
+        fourty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"TradingNameDetails:AccountYearEndDateDD\"]/div[3]"))).click();
+        Thread.sleep(2000);
+        actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
+       // driver.findElement(By.xpath("//li[contains(text(),'February')]")).click();
+        Thread.sleep(2000);
+        fourty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"TradingNameDetails:AccountYearEndDateMM\"]/div[3]"))).click();
+        Thread.sleep(1000);
+        actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
+//        driver.findElement(By.xpath("//li[contains(text(),'02')]")).click();
+        Thread.sleep(1000);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        driver.findElement(By.id("TradingNameDetails:RGDNo")).sendKeys(String.valueOf(timestamp.getTime()));
+        Thread.sleep(1000);
+        driver.findElement(By.id("TradingNameDetails:RGDRegDate_input")).click();
+        driver.findElement(By.id("TradingNameDetails:RGDRegDate_input")).sendKeys(Keys.ENTER);
+        actions.sendKeys(Keys.TAB).perform();
+        driver.findElement(By.id("TradingNameDetails:OK")).click();
+        switchToDefault();
+        Thread.sleep(4000);
+
+    }
+
     @Then("Fill in Local postal address details for Individual")
     public void fillInLocalPostalAddressDetailsForIndividual() throws InterruptedException {
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(., 'Addresses')]"))).click();
 
-        ten.until(ExpectedConditions.visibilityOfElementLocated(By.id("RegisterIndividual:individualAccordion:addressTableHandler:AddAddress"))).click();
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("RegisterIndividual:individualAccordion:addressTableHandler:AddAddress"))).click();
         WebElement frame = twenty.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("iframe")));
         driver.switchTo().frame(frame);
 
@@ -1396,98 +1439,21 @@ public class stepDefinitions extends BaseClass {
         }
 
         if (taxtype.equals("CIT Return (Final)")) {
-            WebDriverWait wait = new WebDriverWait(driver, 50);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"FlexibleFormEntity:CITDetailsTab:BusinessLocation\"]/div[3]"))).click();
-            Thread.sleep(1000);
-            Actions actions = new Actions(driver);
-            actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//a[contains(text(),'Balance Sheet')]")).click();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("FlexibleFormEntity:CITDetailsTab:balanceSheetDate_input"))).click();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("FlexibleFormEntity:CITDetailsTab:balanceSheetDate_input"))).sendKeys(Keys.ENTER);
-
-
-            Thread.sleep(1000);
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:currentAssetsLocalCurrencies_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:currentAssetsCedis_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:stocksInventories_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:accountReceivables_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:fixedAssets_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:otherAssets_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:tradePayablesLocalCurrencies_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:tradePayablesLeones_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:otherPayablesLocalCurrencies_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:otherPayablesLeones_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:shareholdersFund_input")).sendKeys("0");
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//a[contains(text(),'Income Statement')]")).click();
-            Thread.sleep(2000);
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:localSales_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:exportSales_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:rentIncome_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:dividends_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:interest_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:naturalResourcePayment_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:royalty_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:annuity_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:otherSpecify_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:lessCostOfSalesAndExpenses_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:generalExpenses_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:depreciation_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:foreignExchangeLosses_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:otherCostsExpenses_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:unrealisedExchangeLoss_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:depreciation_ab_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:gpForBadDebt_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:serviceBenefit_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:disallowedInterest_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:capitalisedRepairs_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:entertainmentExpenses_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:businessAsset_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:othersSpecify_ab_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:interestIncome_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:saleBusinessAsset_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:nt_rentalIncome_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:nt_othersSpecify_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:ad_exchangeGain_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:ad_capitalAllowance_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:ad_endOfServicePaid_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:ad_saleOfBusinessAsset_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:ad_investmentAllowance_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:ad_othersSpecify_input")).sendKeys("0");
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//a[contains(text(),'Computation Of Taxes')]")).click();
-            Thread.sleep(2000);
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:lossBroughtFromPrevYear_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:lossRelief_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:wht_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:taxesPaidDirectly_input")).sendKeys("0");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:priorPeriodCredit_input")).sendKeys("0");
-
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//a[contains(text(),'Attachments')]")).click();
-            Thread.sleep(2000);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("FlexibleFormEntity:CITDetailsTab:attachmentTable:j_id1"))).click();
-            WebElement frame = wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("iframe")));
-            driver.switchTo().frame(frame);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"FlexbleFormAttachment:DocType\"]/div[3]"))).click();
-            Thread.sleep(1000);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(),'Annual Financial Statements')]"))).click();
-            Thread.sleep(2000);
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            driver.findElement(By.id("FlexbleFormAttachment:id_reference")).sendKeys(String.valueOf(timestamp.getTime()));
-            Thread.sleep(1000);
-            String path = System.getProperty("user.dir") + File.separator + "src\\test\\resources\\" + File.separator + "id_doc.png";
-            driver.findElement(By.id("FlexbleFormAttachment:id_attachment_input")).sendKeys(path);
-            Thread.sleep(3000);
-            driver.findElement(By.id("FlexbleFormAttachment:Ok")).click();
-            driver.switchTo().defaultContent();
-
-            twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("FlexibleFormEntity:CITDetailsTab:declarantName"))).sendKeys("DR Margie Wambui");
-            driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:declarantPosition")).sendKeys("Doctor");
-            //driver.findElement(By.id("FlexibleFormEntity:CITDetailsTab:declarationDate_input")).sendKeys("01/01/2018");
+            thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"FlexibleFormEntity:corporateIncome\"]/div[3]"))).click();
+            Thread.sleep(1500);
+            driver.findElement(By.xpath("//li[contains(text(),'Yes')]")).click();
+            fourty.until(ExpectedConditions.visibilityOfElementLocated(By.id("FlexibleFormEntity:businessIncomeIs_input"))).sendKeys("100000");
+            Thread.sleep(500);
+            driver.findElement(By.id("FlexibleFormEntity:openingStockIs_input")).sendKeys("5");
+            Thread.sleep(500);
+            driver.findElement(By.id("FlexibleFormEntity:purchasesIs_input")).sendKeys("50000");
+            Thread.sleep(500);
+            driver.findElement(By.id("FlexibleFormEntity:closingStockIs_input")).sendKeys("10");
+            Thread.sleep(500);
+            driver.findElement(By.id("FlexibleFormEntity:shareCapitalBS_input")).sendKeys("100");
+            twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("FlexibleFormEntity:declarantName"))).sendKeys("DR Margie Wambui");
+            driver.findElement(By.id("FlexibleFormEntity:declarantDesignation")).sendKeys("Doctor");
+            driver.findElement(By.id("FlexibleFormEntity:declarationDate_input")).sendKeys("01/01/2018");
         }
 
     }

@@ -5,8 +5,8 @@ Feature: Submit Registration Application Individual
     Given User navigates to the login page
     When Enters the username "tripsuser" and password "Passw0rd" to login
     Then Go to Registration > Register Taxpayer > Register Individual Demo
-#    Then Select Category if Individual as "Sole Proprietor"
-    Then Select Category if Individual as "Self-employed"
+    Then Select Category if Individual as "Sole Proprietor"
+#    Then Select Category if Individual as "Self-employed"
     Then Select title for Individual
     Then Enter first name as "Maxipain" and last name as random
     Then Select Gender for Individual
@@ -21,9 +21,11 @@ Feature: Submit Registration Application Individual
     Then Fill in National ID Identification details
 #    Then Fill in residence permit identification details
     Then Fill in occupation and business Interest details for Individual
+    Then Fill in sole proprietor additional details
     Then Fill in Local postal address details for Individual
     Then Enter email primary contact for individual as "margiewambui11@gmail.com"
     Then Upload attachment "National ID" for Individual with file "id_doc.png"
+    Then Upload attachment "Business Registration Certificate" for Individual with file "id_doc.png"
     Then Verify success message "Record Added"
     Then Submit Individual registration application
     Then Verify success message "Processing Completed - Reference Number"
