@@ -800,8 +800,8 @@ public class stepDefinitions extends BaseClass {
 
     @Then("^Click on registration application link$")
     public void click_on_registration_application_link() throws Throwable {
-        Thread.sleep(4000);
-        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"TabCS\"]/a"))).click();
+        Thread.sleep(2000);
+        fiftyfive.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Pro.getProperty("Cases_Management_Dropdown_XPATH")))).click();
         Thread.sleep(2000);
         driver.findElement(By.id("tbg_registrationapplication")).click();
     }
