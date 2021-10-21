@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.security.Key;
 import java.sql.Timestamp;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
@@ -801,7 +802,8 @@ public class stepDefinitions extends BaseClass {
     @Then("^Click on registration application link$")
     public void click_on_registration_application_link() throws Throwable {
         Thread.sleep(2000);
-        fiftyfive.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Pro.getProperty("Cases_Management_Dropdown_XPATH")))).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(55));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Pro.getProperty("Cases_Management_Dropdown_XPATH")))).click();
         Thread.sleep(2000);
         driver.findElement(By.id("tbg_registrationapplication")).click();
     }
