@@ -803,8 +803,8 @@ public class stepDefinitions extends BaseClass {
     public void click_on_registration_application_link() throws Throwable {
         Thread.sleep(3000);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(55));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Pro.getProperty("Cases_Management_Dropdown_XPATH")))).isDisplayed();
-        driver.findElement(By.xpath(Pro.getProperty("Cases_Management_Dropdown_XPATH"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"TabCS\"]/a"))).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"TabCS\"]/a")).click();
         Thread.sleep(2000);
         driver.findElement(By.id("tbg_registrationapplication")).click();
     }
