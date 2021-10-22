@@ -802,7 +802,7 @@ public class stepDefinitions extends BaseClass {
     @Then("^Click on registration application link$")
     public void click_on_registration_application_link() throws Throwable {
         Thread.sleep(7000);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(55));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"TabCS\"]/a"))).isDisplayed();
         driver.findElement(By.xpath("//*[@id=\"TabCS\"]/a")).click();
         Thread.sleep(2000);
