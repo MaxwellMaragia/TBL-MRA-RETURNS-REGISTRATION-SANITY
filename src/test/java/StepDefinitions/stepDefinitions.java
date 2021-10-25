@@ -805,16 +805,16 @@ public class stepDefinitions extends BaseClass {
     @Then("^Click on registration application link$")
     public void click_on_registration_application_link() throws Throwable {
         Thread.sleep(3000);
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"TabCS\"]/a"))).isDisplayed();
-//        driver.findElement(By.xpath("//*[@id=\"TabCS\"]/a")).click();
-//        Thread.sleep(2000);
-//        driver.findElement(By.id("tbg_registrationapplication")).click();
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement caseManagement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("TabCS")));
-        actions.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(caseManagement))).click();
-        actions.moveToElement(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tbg_registrationapplication")))).click();
+        caseManagement.click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("tbg_registrationapplication")).click();
+
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+//        WebElement caseManagement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"TabCS\"]/a/span")));
+//        actions.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(caseManagement))).click();
+//        actions.moveToElement(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tbg_registrationapplication")))).click();
 
     }
 
