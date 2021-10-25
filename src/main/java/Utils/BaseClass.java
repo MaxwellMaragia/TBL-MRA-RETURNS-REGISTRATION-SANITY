@@ -14,6 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 //Base class to allow access to browser from hooks
 public class BaseClass {
@@ -27,8 +28,11 @@ public class BaseClass {
 		FileInputStream fls = new FileInputStream("src\\test\\resources\\global.properties");
 		prop.load(fls);
 
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--disable-dev-shm-usage");
 		System.setProperty("webdriver.chrome.driver", "Browsers\\chromedriver.exe");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
+
         driver.manage().window().maximize();
 
         return driver;

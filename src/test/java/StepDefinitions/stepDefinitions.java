@@ -803,7 +803,7 @@ public class stepDefinitions extends BaseClass {
 
     @Then("^Click on registration application link$")
     public void click_on_registration_application_link() throws Throwable {
-        Thread.sleep(7000);
+        Thread.sleep(10000);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"TabCS\"]/a"))).isDisplayed();
         driver.findElement(By.xpath("//*[@id=\"TabCS\"]/a")).click();
@@ -1029,7 +1029,7 @@ public class stepDefinitions extends BaseClass {
     public void enterDetailsForPersonMakingApplicationWithTin(String arg0) throws InterruptedException {
         driver.findElement(By.id("OrganisationSummaryDetails:organisationAccordion:find")).click();
         switchToFrameBackoffice();
-        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:accountNumber"))).sendKeys(arg0);
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:TIN"))).sendKeys(arg0);
         driver.findElement(By.id("SearchForm:j_idt21")).click();
         Thread.sleep(2000);
         switchToDefault();
@@ -1094,7 +1094,7 @@ public class stepDefinitions extends BaseClass {
         switchToDefault();
         Thread.sleep(3000);
         driver.switchTo().frame(1);
-        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:accountNumber"))).sendKeys(tin);
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:TIN"))).sendKeys(tin);
         driver.findElement(By.id("SearchForm:j_idt21")).click();
         switchToDefault();
         switchToFrameBackoffice();
@@ -1202,15 +1202,15 @@ public class stepDefinitions extends BaseClass {
 
     @Then("Search for Individual tin to register taxtype for")
     public void searchForIndividualTinToRegisterTaxtypeFor() {
-        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:accountNumber"))).sendKeys(sharedatastep.Individual_tin);
-        //twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:accountNumber"))).sendKeys("P0102556");
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:TIN"))).sendKeys(sharedatastep.Individual_tin);
+        //twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:TIN"))).sendKeys("P0102556");
         driver.findElement(By.id("SearchForm:j_idt42")).click();
     }
 
     @Then("Search for Organization tin to register taxtype for")
     public void searchForOrganizationTinToRegisterTaxtypeFor() {
-        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:accountNumber"))).sendKeys(sharedatastep.Organization_tin);
-        //twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:accountNumber"))).sendKeys("1000058018");
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:TIN"))).sendKeys(sharedatastep.Organization_tin);
+        //twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:TIN"))).sendKeys("1000058018");
         driver.findElement(By.id("SearchForm:j_idt42")).click();
     }
 
@@ -1281,7 +1281,7 @@ public class stepDefinitions extends BaseClass {
              //tin = "1000058603";
          }
 
-         thirty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:accountNumber"))).sendKeys(tin);
+         thirty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:TIN"))).sendKeys(tin);
          driver.findElement(By.xpath("//*[@id=\"SearchForm:ReturnType_label\"]")).click();
          Thread.sleep(1000);
          driver.findElement(By.xpath("//li[contains(text(),'" + taxtype + "')]")).click();
@@ -1330,7 +1330,7 @@ public class stepDefinitions extends BaseClass {
             //tin = "1000058603";
         }
 
-        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:accountNumber"))).sendKeys(tin);
+        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:TIN"))).sendKeys(tin);
         driver.findElement(By.id("SearchForm:periodyear")).sendKeys(year);
         driver.findElement(By.id("SearchForm:periodnumber")).sendKeys(number);
 

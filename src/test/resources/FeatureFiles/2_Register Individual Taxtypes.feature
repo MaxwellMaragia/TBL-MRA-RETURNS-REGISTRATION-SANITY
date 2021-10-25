@@ -25,7 +25,7 @@ Feature: Register Tax Type Individual - Register Tax Type
     And Verify approval "Approved"
     Examples:
       | TaxType              |
-#      | PAYE                 |
+      | PAYE                 |
       | Personal Income Tax  |
 #      | Domestic Excise      |
 #      | Domestic VAT         |
