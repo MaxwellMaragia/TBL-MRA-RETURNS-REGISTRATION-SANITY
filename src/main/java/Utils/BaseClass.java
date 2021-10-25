@@ -30,7 +30,7 @@ public class BaseClass {
 
 		ChromeOptions options = new ChromeOptions();
 
-		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu");
 		System.setProperty("webdriver.chrome.driver", "Browsers\\chromedriver.exe");
         driver = new ChromeDriver(options);
 

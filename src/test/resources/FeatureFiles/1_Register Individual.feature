@@ -31,10 +31,6 @@ Feature: Submit Registration Application Individual
     Then Submit Individual registration application
     Then Verify success message "Processing Completed - Reference Number"
     Then Obtain reference number for ind registration "Processing Completed - Reference Number - ARN"
-
-
-  @ind @ind-reg-only @sanity @ind-reg-taxtypes @registration
-  Scenario: To verify the process of approving registration application
     Then Open CRM and close modal
     Then Click on registration application link
     Then switch to frame0
