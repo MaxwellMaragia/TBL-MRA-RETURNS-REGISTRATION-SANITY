@@ -754,7 +754,8 @@ public class stepDefinitions extends BaseClass {
         driver.findElement(By.id("ContactDetails:ContactMethodDetailForWeb")).sendKeys(email);
         driver.findElement(By.id("ContactDetails:Ok")).click();
         switchToDefault();
-        sixty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Personal')]"))).isDisplayed();
+        //onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Personal')]"))).isDisplayed();
+        Thread.sleep(5000);
     }
 
     @Then("Upload attachment {string} for Individual with file {string}")
