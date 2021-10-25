@@ -760,6 +760,7 @@ public class stepDefinitions extends BaseClass {
 
     @Then("Upload attachment {string} for Individual with file {string}")
     public void uploadAttachmentForIndividual(String attachment, String file) throws InterruptedException {
+        Thread.sleep(4000);
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(., 'Attachments')]"))).click();
 
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.id("RegisterIndividual:individualAccordion:attachmentTableHandler:AddAttachment"))).click();
