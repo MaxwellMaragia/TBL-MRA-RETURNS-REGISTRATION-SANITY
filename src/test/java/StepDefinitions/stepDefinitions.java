@@ -502,7 +502,7 @@ public class stepDefinitions extends BaseClass {
         driver.findElement(By.xpath("//li[contains(text(),'" + country + "')]")).click();
         Thread.sleep(1000);
         fourty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"RegisterIndividual:individualAccordion:CountryOfResidence\"]/div[3]"))).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         driver.findElement(By.xpath("//li[contains(text(),'" + country + "')]")).click();
     }
 

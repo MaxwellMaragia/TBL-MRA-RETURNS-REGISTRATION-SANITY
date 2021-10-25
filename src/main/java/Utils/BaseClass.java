@@ -23,6 +23,19 @@ public class BaseClass {
 	public static WebDriver driver;
 	public static Properties prop;
 
+//	public static WebDriver getDriver() throws IOException
+//	{
+//		prop = new Properties();
+//		FileInputStream fls = new FileInputStream("src\\test\\resources\\global.properties");
+//		prop.load(fls);
+//		System.setProperty("webdriver.gecko.driver", "Browsers\\geckodriver.exe");
+//		driver = new FirefoxDriver();
+//		driver.manage().window().maximize();
+//
+//        return driver;
+//
+//	}
+
 	public static WebDriver getDriver() throws IOException
 	{
 		prop = new Properties();
@@ -32,14 +45,12 @@ public class BaseClass {
 		ChromeOptions options = new ChromeOptions();
 
 		options.addArguments("--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu");
-		System.setProperty("webdriver.chrome.driver", "Browsers\\geckodriver.exe");
-		//System.setProperty("webdriver.chrome.driver", "Browsers\\chromedriver.exe");
-        //driver = new ChromeDriver(options);
-		driver = new FirefoxDriver();
+		System.setProperty("webdriver.chrome.driver", "Browsers\\chromedriver.exe");
+		driver = new ChromeDriver(options);
 
-        driver.manage().window().maximize();
+		driver.manage().window().maximize();
 
-        return driver;
+		return driver;
 
 	}
 	public static String randomDate() {
