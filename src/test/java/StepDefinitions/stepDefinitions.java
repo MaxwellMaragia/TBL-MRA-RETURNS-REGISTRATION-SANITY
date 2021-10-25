@@ -736,7 +736,7 @@ public class stepDefinitions extends BaseClass {
 
         driver.findElement(By.id("AddressDetails:addOk")).click();
         switchToDefault();
-        fourty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Local Postal Address')]"))).isDisplayed();
+        sixty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Local Postal Address')]"))).isDisplayed();
     }
 
     @Then("Enter email primary contact for individual as {string}")
@@ -754,7 +754,7 @@ public class stepDefinitions extends BaseClass {
         driver.findElement(By.id("ContactDetails:ContactMethodDetailForWeb")).sendKeys(email);
         driver.findElement(By.id("ContactDetails:Ok")).click();
         switchToDefault();
-        fourty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Personal')]"))).isDisplayed();
+        sixty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Personal')]"))).isDisplayed();
     }
 
     @Then("Upload attachment {string} for Individual with file {string}")
