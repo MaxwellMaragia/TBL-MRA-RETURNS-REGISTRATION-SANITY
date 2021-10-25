@@ -759,15 +759,16 @@ public class stepDefinitions extends BaseClass {
     }
 
     @Then("Upload attachment {string} for Individual with file {string}")
-    public void uploadAttachmentForIndividual(String attachment, String file) {
+    public void uploadAttachmentForIndividual(String attachment, String file) throws InterruptedException {
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(., 'Attachments')]"))).click();
 
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.id("RegisterIndividual:individualAccordion:attachmentTableHandler:AddAttachment"))).click();
         switchToFrameBackoffice();
 
         twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"AttachmentDetails:DocType\"]/div[3]"))).click();
+        Thread.sleep(1500);
         driver.findElement(By.xpath("//li[text()='" + attachment + "']")).click();
-
+        Thread.sleep(1500);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         driver.findElement(By.id("AttachmentDetails:Reference")).sendKeys(String.valueOf(timestamp.getTime()));
 
