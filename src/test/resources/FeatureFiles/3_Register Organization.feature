@@ -1,6 +1,6 @@
 Feature: Submit Registration Application Organisation
 
-  @org @org-reg-only @org-taxtypes @registration
+  @org @sanity @org-reg-only @org-taxtypes @registration
   Scenario: To verify the process of Registering an organisation successfully
     Given User navigates to the login page
     When Enters the username "tripsuser" and password "Passw0rd" to login
