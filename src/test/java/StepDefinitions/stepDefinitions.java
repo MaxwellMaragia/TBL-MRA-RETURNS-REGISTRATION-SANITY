@@ -741,6 +741,7 @@ public class stepDefinitions extends BaseClass {
 
     @Then("Enter email primary contact for individual as {string}")
     public void enterEmailPrimaryContactForIndividualAs(String email) throws InterruptedException {
+        Thread.sleep(4000);
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(., 'Contact Methods')]"))).click();
 
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.id("RegisterIndividual:individualAccordion:contactDetailsHandler:AddContacts"))).click();
