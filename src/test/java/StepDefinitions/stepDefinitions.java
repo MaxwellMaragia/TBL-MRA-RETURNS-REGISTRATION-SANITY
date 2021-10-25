@@ -812,7 +812,7 @@ public class stepDefinitions extends BaseClass {
 //        driver.findElement(By.id("tbg_registrationapplication")).click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-        WebElement caseManagement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"TabCS\"]/a")));
+        WebElement caseManagement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("TabCS")));
         actions.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(caseManagement))).click();
         actions.moveToElement(wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tbg_registrationapplication")))).click();
 
