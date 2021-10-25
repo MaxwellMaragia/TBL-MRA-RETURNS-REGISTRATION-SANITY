@@ -29,6 +29,7 @@ public class BaseClass {
 		prop.load(fls);
 
 		ChromeOptions options = new ChromeOptions();
+
 		options.addArguments("--disable-dev-shm-usage");
 		System.setProperty("webdriver.chrome.driver", "Browsers\\chromedriver.exe");
         driver = new ChromeDriver(options);
