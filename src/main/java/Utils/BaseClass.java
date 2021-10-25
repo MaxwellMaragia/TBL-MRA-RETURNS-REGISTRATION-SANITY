@@ -15,6 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 //Base class to allow access to browser from hooks
 public class BaseClass {
@@ -31,8 +32,10 @@ public class BaseClass {
 		ChromeOptions options = new ChromeOptions();
 
 		options.addArguments("--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu");
-		System.setProperty("webdriver.chrome.driver", "Browsers\\chromedriver.exe");
-        driver = new ChromeDriver(options);
+		System.setProperty("webdriver.chrome.driver", "Browsers\\geckodriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "Browsers\\chromedriver.exe");
+        //driver = new ChromeDriver(options);
+		driver = new FirefoxDriver();
 
         driver.manage().window().maximize();
 
