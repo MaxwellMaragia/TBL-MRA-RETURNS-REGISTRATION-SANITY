@@ -24,7 +24,7 @@ Feature: Submit Registration Application Individual
     Then Fill in sole proprietor additional details
     Then Fill in Local postal address details for Individual
     Then Enter email primary contact for individual as "margiewambui11@gmail.com"
-    Then Verify success message "Record Added"
+#    Then Verify success message "Record Added"
     Then Upload attachment "National ID" for Individual with file "id_doc.png"
     Then Verify success message "Record Added"
     Then Upload attachment "Business Registration Certificate" for Individual with file "id_doc.png"

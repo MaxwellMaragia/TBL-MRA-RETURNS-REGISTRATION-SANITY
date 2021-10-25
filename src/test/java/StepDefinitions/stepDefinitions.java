@@ -748,13 +748,14 @@ public class stepDefinitions extends BaseClass {
         driver.switchTo().frame(frame);
 
         twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ContactDetails:Purpose\"]/div[3]"))).click();
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         driver.findElement(By.xpath("//li[contains(text(),'Personal')]")).click();
-
+        Thread.sleep(500);
         driver.findElement(By.id("ContactDetails:ContactMethodDetailForWeb")).sendKeys(email);
+        Thread.sleep(500);
         driver.findElement(By.id("ContactDetails:Ok")).click();
         switchToDefault();
-        //onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Personal')]"))).isDisplayed();
+        onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Personal')]"))).isDisplayed();
         Thread.sleep(5000);
     }
 
@@ -762,7 +763,6 @@ public class stepDefinitions extends BaseClass {
     public void uploadAttachmentForIndividual(String attachment, String file) throws InterruptedException {
 
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(., 'Attachments')]"))).click();
-
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.id("RegisterIndividual:individualAccordion:attachmentTableHandler:AddAttachment"))).click();
         switchToFrameBackoffice();
 
