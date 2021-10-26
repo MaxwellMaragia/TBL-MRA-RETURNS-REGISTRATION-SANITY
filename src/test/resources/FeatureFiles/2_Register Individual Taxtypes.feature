@@ -27,7 +27,7 @@ Feature: Register Tax Type Individual - Register Tax Type
       | TaxType              |
       | PAYE                 |
       | Personal Income Tax  |
-#      | Domestic Excise      |
-#      | Domestic VAT         |
-#      | Fringe Benefit Tax   |
-#      | Withholding Tax(WHT) |
+      | Domestic Excise      |
+      | Domestic VAT         |
+      | Fringe Benefit Tax   |
+      | Withholding Tax(WHT) |

@@ -1,4 +1,4 @@
-Feature: Register Tax Type Individual - Register Tax Type
+Feature: Register Tax Type Organization - Register Tax Type
 
   @org @org-taxtypes-only @sanity @org-taxtypes @registration
   Scenario Outline: To Verify the Process of Registering Organization Tax Type - <TaxType>
