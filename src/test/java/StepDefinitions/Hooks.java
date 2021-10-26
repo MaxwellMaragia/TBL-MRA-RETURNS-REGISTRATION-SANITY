@@ -24,6 +24,14 @@ public class Hooks extends BaseClass {
 	}
 
 	@After(order=1)
+	public void AfterSelenium()
+	{
+		driver.close();
+		//driver.quit();
+		System.out.println("Completed execution for the scenario :" + scenario.getName());
+	}
+
+	@After(order=2)
 	public void AftersaveScreenshot(Scenario scenario) {
 
 		File destPath;
@@ -47,11 +55,5 @@ public class Hooks extends BaseClass {
 		}
 	}
 
-	@After(order=2)
-	public void AfterSelenium()
-	{
-		driver.close();
-		//driver.quit();
-		System.out.println("Completed execution for the scenario :" + scenario.getName());
-	}
+
 }
