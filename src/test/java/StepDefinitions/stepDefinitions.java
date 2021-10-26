@@ -205,7 +205,7 @@ public class stepDefinitions extends BaseClass {
     @Then("^switch to frame0$")
     public void switch_to_frame0() throws Throwable {
         driver.switchTo().defaultContent();
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, 60);
         WebElement specificframe = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(Pro.getProperty("NextStage_Frame_ID"))));
         driver.switchTo().frame(specificframe);
         Thread.sleep(3000);
@@ -809,8 +809,11 @@ public class stepDefinitions extends BaseClass {
 //        WebElement caseManagement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("TabCS")));
 //        caseManagement.click();
 
-        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.id("TabCS-main"))).isDisplayed();
-        Thread.sleep(5000);
+       // thirty.until(ExpectedConditions.visibilityOfElementLocated(By.id("TabCS-main"))).isDisplayed();
+        switch_to_frame0();
+        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Active Cases in Progress Overview')]"))).isDisplayed();
+        switchToDefault();
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//*[@id=\"TabCS\"]/a/span")).click();
         Thread.sleep(1000);
         driver.findElement(By.id("tbg_registrationapplication")).click();
