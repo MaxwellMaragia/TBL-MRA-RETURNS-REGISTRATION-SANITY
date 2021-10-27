@@ -839,7 +839,7 @@ public class stepDefinitions extends BaseClass {
         WebElement specificframe = onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.id("WebResource_RegistrationApplicationAngular")));
         driver.switchTo().frame(specificframe);
 
-        onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Attachments')]"))).isDisplayed();
+        twohundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Attachments')]"))).isDisplayed();
 
         List<WebElement> element = driver.findElements(By.xpath(Pro.getProperty("Individual_NextStage_RefNum_DownloadFrame_DownloadLink_XPATH")));
         for (WebElement ele : element) {
