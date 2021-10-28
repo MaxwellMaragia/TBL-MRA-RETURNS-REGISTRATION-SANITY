@@ -1082,8 +1082,9 @@ public class stepDefinitions extends BaseClass {
         twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ContactDetails:Purpose\"]/div[3]"))).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//li[contains(text(),'Personal')]")).click();
-
+        Thread.sleep(1000);
         driver.findElement(By.id("ContactDetails:ContactMethodDetailForWeb")).sendKeys(email);
+        Thread.sleep(1000);
         driver.findElement(By.id("ContactDetails:Ok")).click();
         switchToDefault();
         twohundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Personal')]"))).isDisplayed();
