@@ -14,12 +14,12 @@ Feature: Submit Registration Application Organisation
     Then Enter business sector details
 #    Then Select Assigned tax office for organization as "BOMTO"
     Then Select reason for organization tin application "Am a Supplier"
-    Then Enter details for person making application with tin "P0019441"
-#    Then Enter details for person making application with tin "P0102627"
+#    Then Enter details for person making application with tin "P0019441"
+    Then Enter details for person making application with tin "P0102627"
     Then Fill in Local postal address details for Organization
     Then Enter email primary contact for organization as "margiewambui11@gmail.com"
-    Then Enter primary director with tin "P0019441"
-#    Then Enter primary director with tin "P0102627"
+#    Then Enter primary director with tin "P0019441"
+    Then Enter primary director with tin "P0102627"
     Then Verify success message "Record Added"
     Then Upload attachment "Business Registration Certificate" for Organization with file "id_doc.png"
     Then Verify success message "Record Added"

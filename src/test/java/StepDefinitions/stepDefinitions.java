@@ -436,10 +436,13 @@ public class stepDefinitions extends BaseClass {
 
     //registration
     @Then("Go to Registration > Register Taxpayer > Register Individual Demo")
-    public void goToRegistrationRegisterTaxpayerRegisterIndividualDemo() {
+    public void goToRegistrationRegisterTaxpayerRegisterIndividualDemo() throws InterruptedException {
         thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[span='Registration']"))).click();
         thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[span='Register Taxpayer']"))).click();
+        //thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[span='Register Individual']"))).click();
+        Thread.sleep(1500);
         thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"sub1\"]/ul/li[1]/a"))).click();
+//        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"sub1\"]/ul/li[1]/a"))).click();
     }
 
     @Then("Select Category if Individual as {string}")
