@@ -759,7 +759,7 @@ public class stepDefinitions extends BaseClass {
         Thread.sleep(500);
         driver.findElement(By.id("ContactDetails:Ok")).click();
         switchToDefault();
-        onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Personal')]"))).isDisplayed();
+        twohundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Personal')]"))).isDisplayed();
         Thread.sleep(5000);
     }
 
@@ -843,7 +843,7 @@ public class stepDefinitions extends BaseClass {
         WebElement specificframe = onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.id("WebResource_RegistrationApplicationAngular")));
         driver.switchTo().frame(specificframe);
 
-        onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Attachments')]"))).isDisplayed();
+        twohundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Attachments')]"))).isDisplayed();
 
         List<WebElement> element = driver.findElements(By.xpath(Pro.getProperty("Individual_NextStage_RefNum_DownloadFrame_DownloadLink_XPATH")));
         for (WebElement ele : element) {
@@ -1086,11 +1086,12 @@ public class stepDefinitions extends BaseClass {
         twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ContactDetails:Purpose\"]/div[3]"))).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//li[contains(text(),'Personal')]")).click();
-
+        Thread.sleep(1000);
         driver.findElement(By.id("ContactDetails:ContactMethodDetailForWeb")).sendKeys(email);
+        Thread.sleep(1000);
         driver.findElement(By.id("ContactDetails:Ok")).click();
         switchToDefault();
-        onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Personal')]"))).isDisplayed();
+        twohundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Personal')]"))).isDisplayed();
     }
 
     @Then("Enter primary director with tin {string}")
