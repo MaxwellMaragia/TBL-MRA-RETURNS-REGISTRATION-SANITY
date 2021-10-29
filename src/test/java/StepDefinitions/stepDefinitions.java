@@ -444,6 +444,7 @@ public class stepDefinitions extends BaseClass {
 
     @Then("Select Category if Individual as {string}")
     public void selectCategoryIfIndividualAs(String category) throws InterruptedException {
+//        fourty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"RegisterIndividual:LegalStatusInd\"]/div[3]"))).click();
         fourty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"RegisterIndividual:LegalStatusInd\"]/div[3]"))).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//li[contains(text(),'" + category + "')]")).click();
