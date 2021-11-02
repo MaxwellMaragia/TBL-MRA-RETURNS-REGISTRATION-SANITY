@@ -1,4 +1,4 @@
-Feature: Lodge-File-Adjust-Cancel Tax Returns for Individual and Organization
+Feature: Lodge-File-Adjust-Cancel Tax Returns for Organization
 
   @org @sanity @lodge @returns
   Scenario Outline: Verify the process of Lodge Paper Return for <taxtype>
@@ -80,4 +80,4 @@ Feature: Lodge-File-Adjust-Cancel Tax Returns for Individual and Organization
     And Verify approval "Approved"
     Examples:
       | category     | taxtype                        | year | number |
-      | Organisation | Company Income Tax(CIT) Return | 2021 | 1      |
+#      | Organisation | Company Income Tax(CIT) Return | 2021 | 1      |

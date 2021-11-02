@@ -84,4 +84,4 @@ Feature: Lodge-File-Adjust-Cancel Tax Returns for Individual and Organization
     Examples:
       | category   | taxtype                         | year | number |
       | Individual | PAYE Tax Return                 | 2022 | 1      |
-      | Individual | Personal Income Tax(PIT) Return | 2021 | 1      |
+#      | Individual | Personal Income Tax(PIT) Return | 2021 | 1      |

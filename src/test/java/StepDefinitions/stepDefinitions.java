@@ -971,10 +971,10 @@ public class stepDefinitions extends BaseClass {
 
     @Then("Enter rgd number")
     public void enterRgdNumber() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("OrganisationSummaryDetails:organisationAccordion:rgdNo"))).sendKeys(String.valueOf(timestamp.getTime()));
-        Thread.sleep(2000);
+        Thread.sleep(4000);
     }
 
     @Then("Select account year end date and end month")
@@ -1446,7 +1446,7 @@ public class stepDefinitions extends BaseClass {
             driver.findElement(By.id("FlexibleFormEntity:openingStockIs_input")).sendKeys("5");
             Thread.sleep(500);
             driver.findElement(By.id("FlexibleFormEntity:purchasesIs_input")).sendKeys("50000");
-            Thread.sleep(500);
+            Thread.sleep(1500);
             driver.findElement(By.id("FlexibleFormEntity:closingStockIs_input")).sendKeys("10");
             Thread.sleep(500);
             driver.findElement(By.id("FlexibleFormEntity:shareCapitalBS_input")).sendKeys("100");
@@ -1688,7 +1688,7 @@ public class stepDefinitions extends BaseClass {
     @Then("^Click yes$")
     public void click_yes() throws Throwable {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("FlexibleFormEntity:j_idt31"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("FlexibleFormEntity:j_idt32"))).click();
     }
 
     @Then("Obtain reference number for cancellation {string}")
