@@ -1293,12 +1293,15 @@ public class stepDefinitions extends BaseClass {
              //tin = "V0102934";
          }
 
+         Thread.sleep(3000);
          thirty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:TIN"))).sendKeys(tin);
-        Thread.sleep(2000);
+         Thread.sleep(2000);
          driver.findElement(By.xpath("//*[@id=\"SearchForm:ReturnType_label\"]")).click();
          Thread.sleep(1000);
          driver.findElement(By.xpath("//li[contains(text(),'" + taxtype + "')]")).click();
+         Thread.sleep(1000);
          driver.findElement(By.id("SearchForm:PeriodNumber")).sendKeys(number);
+         Thread.sleep(1000);
          driver.findElement(By.id("SearchForm:PeriodYear")).sendKeys(year);
 
          driver.findElement(By.id("SearchForm:j_idt21")).click();
