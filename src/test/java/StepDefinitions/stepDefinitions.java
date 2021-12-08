@@ -197,9 +197,12 @@ public class stepDefinitions extends BaseClass {
 
     @And("^Click on Case management dropdown$")
     public void click_on_case_management_dropdown() throws Throwable {
-        Thread.sleep(2000);
-        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Pro.getProperty("Cases_Management_Dropdown_XPATH")))).click();
-        Thread.sleep(2000);
+        switch_to_frame0();
+        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Active Cases in Progress Overview')]"))).isDisplayed();
+        switchToDefault();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id=\"TabCS\"]/a/span")).click();
+        Thread.sleep(1000);
     }
 
     @Then("^switch to frame0$")
@@ -971,10 +974,12 @@ public class stepDefinitions extends BaseClass {
 
     @Then("Enter rgd number")
     public void enterRgdNumber() throws InterruptedException {
+
         Thread.sleep(3000);
+
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("OrganisationSummaryDetails:organisationAccordion:rgdNo"))).sendKeys(String.valueOf(timestamp.getTime()));
-        Thread.sleep(2000);
+        Thread.sleep(4000);
     }
 
     @Then("Select account year end date and end month")
@@ -1205,7 +1210,7 @@ public class stepDefinitions extends BaseClass {
     public void goToRegistrationRegisterTaxtype() throws InterruptedException {
         thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[span='Registration']"))).click();
         Thread.sleep(2000);
-        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"MenuForm:j_idt29\"]/ul/li[1]/ul/li[2]/a"))).click();
+        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[span='Manage Taxpayer']"))).click();
         thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"sub1\"]/ul/li[1]/a"))).click();
     }
 
@@ -1290,12 +1295,15 @@ public class stepDefinitions extends BaseClass {
              //tin = "V0102934";
          }
 
+         Thread.sleep(3000);
          thirty.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:TIN"))).sendKeys(tin);
-        Thread.sleep(2000);
+         Thread.sleep(2000);
          driver.findElement(By.xpath("//*[@id=\"SearchForm:ReturnType_label\"]")).click();
          Thread.sleep(1000);
          driver.findElement(By.xpath("//li[contains(text(),'" + taxtype + "')]")).click();
+         Thread.sleep(1000);
          driver.findElement(By.id("SearchForm:PeriodNumber")).sendKeys(number);
+         Thread.sleep(1000);
          driver.findElement(By.id("SearchForm:PeriodYear")).sendKeys(year);
 
          driver.findElement(By.id("SearchForm:j_idt21")).click();
@@ -1304,7 +1312,7 @@ public class stepDefinitions extends BaseClass {
 
     @Then("Enter liability")
     public void enterLiability() throws InterruptedException {
-         Thread.sleep(15000);
+         Thread.sleep(5000);
          twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("ReturnsLodgement:id_Liability_input"))).sendKeys("9000");
     }
 
@@ -1429,6 +1437,7 @@ public class stepDefinitions extends BaseClass {
         }
 
         if (taxtype.equals("Company Income Tax(CIT) Return")) {
+            Thread.sleep(3500);
             thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"FlexibleFormEntity:corporateIncome\"]/div[3]"))).click();
             Thread.sleep(1500);
             driver.findElement(By.xpath("//li[contains(text(),'Yes')]")).click();
@@ -1440,13 +1449,13 @@ public class stepDefinitions extends BaseClass {
             thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"FlexibleFormEntity:pensionFundIncome\"]/div[3]"))).click();
             Thread.sleep(1500);
             actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
-
+            Thread.sleep(2500);
             fourty.until(ExpectedConditions.visibilityOfElementLocated(By.id("FlexibleFormEntity:businessIncomeIs_input"))).sendKeys("100000");
             Thread.sleep(500);
             driver.findElement(By.id("FlexibleFormEntity:openingStockIs_input")).sendKeys("5");
             Thread.sleep(500);
             driver.findElement(By.id("FlexibleFormEntity:purchasesIs_input")).sendKeys("50000");
-            Thread.sleep(500);
+            Thread.sleep(1500);
             driver.findElement(By.id("FlexibleFormEntity:closingStockIs_input")).sendKeys("10");
             Thread.sleep(500);
             driver.findElement(By.id("FlexibleFormEntity:shareCapitalBS_input")).sendKeys("100");
