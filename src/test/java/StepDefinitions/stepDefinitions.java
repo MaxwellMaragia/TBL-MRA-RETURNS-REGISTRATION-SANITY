@@ -680,7 +680,7 @@ public class stepDefinitions extends BaseClass {
         Thread.sleep(1000);
         driver.findElement(By.id("TradingNameDetails:EffectiveDate_input")).sendKeys(daysFromToday(2));
         Thread.sleep(2000);
-        actions.sendKeys(Keys.TAB).perform();
+        actions.sendKeys(Keys.TAB).sendKeys(Keys.TAB).perform();
         Thread.sleep(1000);
         driver.findElement(By.id("TradingNameDetails:SourceOfCapitalInv")).sendKeys("Loan");
         Thread.sleep(1000);
@@ -776,10 +776,10 @@ public class stepDefinitions extends BaseClass {
         Thread.sleep(1500);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         driver.findElement(By.id("AttachmentDetails:Reference")).sendKeys(String.valueOf(timestamp.getTime()));
-
+        Thread.sleep(1000);
         String path = System.getProperty("user.dir") + File.separator + "src\\test\\resources\\" + File.separator + file;
         driver.findElement(By.id("AttachmentDetails:AttachmentPath_input")).sendKeys(path);
-
+        Thread.sleep(500);
         //verified
         driver.findElement(By.xpath("//*[@id=\"AttachmentDetails:Verified\"]/div[2]/span")).click();
 
@@ -971,7 +971,7 @@ public class stepDefinitions extends BaseClass {
 
     @Then("Enter rgd number")
     public void enterRgdNumber() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("OrganisationSummaryDetails:organisationAccordion:rgdNo"))).sendKeys(String.valueOf(timestamp.getTime()));
         Thread.sleep(2000);
@@ -1688,7 +1688,7 @@ public class stepDefinitions extends BaseClass {
     @Then("^Click yes$")
     public void click_yes() throws Throwable {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("FlexibleFormEntity:j_idt31"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("FlexibleFormEntity:j_idt32"))).click();
     }
 
     @Then("Obtain reference number for cancellation {string}")
