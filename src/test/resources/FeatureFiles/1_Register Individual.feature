@@ -6,15 +6,12 @@ Feature: Submit Registration Application Individual
     When Enters the username "tripsuser" and password "Passw0rd" to login
     Then Go to Registration > Register Taxpayer > Register Individual Demo
     Then Select Category if Individual as "Sole Proprietor"
-#    Then Select Category if Individual as "Self-employed"
     Then Select title for Individual
     Then Enter first name as "Maxipain" and last name as random
     Then Select Gender for Individual
-#    Then Enter mothers maiden name "Wambui"
     Then Enter marital status "Single"
     Then Enter date of birth as "29091996" and place of birth "Pumwani"
     Then Select Nationality and Country of Residence as "Malawi"
-#    Then Select Assigned tax office as "Freetown West"
 #    Then Select Assigned tax office as "BOMTO"
     Then Select reason for Individual tin application "Am a Supplier"
 #    Then Fill in passport Identification details
@@ -25,6 +22,7 @@ Feature: Submit Registration Application Individual
     Then Fill in Local postal address details for Individual
     Then Enter email primary contact for individual as "margiewambui11@gmail.com"
 #    Then Verify success message "Record Added"
+    Then Add property details
     Then Upload attachment "National ID" for Individual with file "id_doc.png"
     Then Verify success message "Record Added"
     Then Upload attachment "Business Registration Certificate" for Individual with file "id_doc.png"
@@ -37,6 +35,10 @@ Feature: Submit Registration Application Individual
     Then switch to frame0
     Then search individual registration reference number
     Then Click on reference number
+    Then switch to frame1
+    Then refresh after text "Case Number"
+    Then switch to frame0
+    Then refresh after text "Case Number"
     Then switch to frame1
     Then Click next stage button
     Then switch to frame1

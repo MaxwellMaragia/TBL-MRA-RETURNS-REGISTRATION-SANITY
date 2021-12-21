@@ -252,10 +252,17 @@ public class stepDefinitions extends BaseClass {
     @Then("^switch to frame1$")
     public void switch_to_frame1() throws Throwable {
         driver.switchTo().defaultContent();
-        WebDriverWait wait = new WebDriverWait(driver, 100);
-        WebElement specificframe = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(Pro.getProperty("NextStage_Frame_ID1"))));
+        WebElement specificframe = onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.id(Pro.getProperty("NextStage_Frame_ID1"))));
         driver.switchTo().frame(specificframe);
         Thread.sleep(2000);
+
+    }
+
+    @Then("refresh after text {string}")
+    public void refreshAfterText(String text) throws InterruptedException {
+        twohundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" + text + "']")));
+        switchToDefault();
+        driver.navigate().refresh();
 
     }
 
@@ -785,11 +792,60 @@ public class stepDefinitions extends BaseClass {
         Thread.sleep(500);
         //verified
         driver.findElement(By.xpath("//*[@id=\"AttachmentDetails:Verified\"]/div[2]/span")).click();
-
-
         driver.findElement(By.id("AttachmentDetails:Ok")).click();
         driver.switchTo().defaultContent();
 
+    }
+
+    @Then("Add property details")
+    public void addPropertyDetails() throws InterruptedException {
+        Thread.sleep(3000);
+        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(., 'Property Details')]"))).click();
+        ten.until(ExpectedConditions.visibilityOfElementLocated(By.id("RegisterIndividual:individualAccordion:propertyTableHandler:AddProperty"))).click();
+        switchToFrameBackoffice();
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"PropertyDetails:PropertyType\"]/div[3]"))).click();
+        Thread.sleep(1500);
+        driver.findElement(By.xpath("//li[text()='Cafeteria']")).click();
+        Thread.sleep(1500);
+
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"PropertyDetails:Ownership\"]/div[3]"))).click();
+        Thread.sleep(1500);
+        driver.findElement(By.xpath("//li[text()='Owned']")).click();
+        Thread.sleep(3500);
+        driver.findElement(By.id("PropertyDetails:TradersPremises")).sendKeys("Directions : "+getRandom(7));
+        Thread.sleep(600);
+
+        //address
+        driver.findElement(By.id("PropertyDetails:AddPropertyAddress")).click();
+        driver.switchTo().defaultContent();
+        Thread.sleep(4500);
+        driver.switchTo().frame(1);
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"AddressDetails:AddressType\"]/div[3]"))).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//li[contains(text(),'Local Postal Address')]")).click();
+
+        //wait for postal address details to load
+        WebElement region = twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"AddressDetails:PostalRegion\"]/div[3]")));
+        region.isDisplayed();
+        //end wait
+
+        driver.findElement(By.id("AddressDetails:City")).sendKeys("Kenema");
+        region.click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//li[contains(text(),'Central Region')]")).click();
+        Thread.sleep(4000);
+        driver.findElement(By.xpath("//*[@id=\"AddressDetails:District\"]/div[3]")).click();
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(),'Lilongwe')]"))).click();
+
+        driver.findElement(By.id("AddressDetails:addOk")).click();
+        Thread.sleep(5000);
+        driver.switchTo().defaultContent();
+        switchToFrameBackoffice();
+        Thread.sleep(3000);
+        //end address
+        driver.findElement(By.id("PropertyDetails:Ok")).click();
+        switchToDefault();
+        sixty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Cafeteria')]"))).isDisplayed();
     }
 
     @Then("Submit Individual registration application")
@@ -826,7 +882,7 @@ public class stepDefinitions extends BaseClass {
     public void searchIndividualRegistrationReferenceNumber() throws InterruptedException {
 
         twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("crmGrid_findCriteria"))).sendKeys(sharedatastep.Reference_number);
-       //twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("crmGrid_findCriteria"))).sendKeys("ARN/00027152/2021");
+        //twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("crmGrid_findCriteria"))).sendKeys("ARN/00057762/2021");
         driver.findElement(By.id("crmGrid_findCriteriaButton")).click();
     }
 
