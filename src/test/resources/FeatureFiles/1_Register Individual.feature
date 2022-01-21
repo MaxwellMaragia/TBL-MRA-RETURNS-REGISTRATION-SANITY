@@ -1,6 +1,6 @@
 Feature: Submit Registration Application Individual
 
-  @ind @ind-reg-only @sanity @ind-reg-taxtypes @registration
+  @ind @ind-reg-only  @ind-reg-taxtypes @registration
   Scenario: To verify the process of Registering an individual successfully
     Given User navigates to the login page
     When Enters the username "tripsuser" and password "Passw0rd" to login
@@ -36,10 +36,10 @@ Feature: Submit Registration Application Individual
     Then search individual registration reference number
     Then Click on reference number
     Then switch to frame1
-    Then refresh after text "Case Number"
-    Then switch to frame0
-    Then refresh after text "Case Number"
-    Then switch to frame1
+#    Then refresh after text "Case Number"
+#    Then switch to frame0
+#    Then refresh after text "Case Number"
+#    Then switch to frame1
     Then Click next stage button
     Then switch to frame1
     Then Goto view AttachmentDetails screen

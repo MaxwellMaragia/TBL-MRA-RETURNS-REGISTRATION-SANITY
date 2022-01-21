@@ -72,7 +72,7 @@ public class stepDefinitions extends BaseClass {
 
 
     public static sharedatastep sharedata;
-    public String ReferenceNumber = "IA000000046";
+
 
     public stepDefinitions(sharedatastep sharedata) {
 
@@ -109,6 +109,7 @@ public class stepDefinitions extends BaseClass {
         onehundred = new WebDriverWait(driver, 100);
         twohundred = new WebDriverWait(driver, 200);
         threehundred = new WebDriverWait(driver, 300);
+        sharedatastep.Individual_tin = "C0104515";
 
     }
 
